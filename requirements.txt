@@ -1,2 +1,5 @@
 pytest==8.2.2
 SQLAlchemy==2.0.30
+Flask==3.0.3
+Flask-RESTful==0.3.10
+pydantic==2.7.3
