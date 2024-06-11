@@ -1,7 +1,7 @@
 import sys
 from contextlib import contextmanager
 import sqlalchemy
-from sqlalchemy.orm import Session, sessionmaker
+from sqlalchemy.orm import sessionmaker
 from persistence.db_setup import create_tables
 
 if hasattr(sys, '_called_from_test'):
