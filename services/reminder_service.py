@@ -14,3 +14,8 @@ def add_reminder(title: str, due_date: datetime):
             session.commit()
 
 
+def list_reminders():
+    with UnitOfWork() as uow:
+        with uow.get_session() as session:
+            reminder_repo = ReminderRepo(session=session)
+            return reminder_repo.list_reminders()

@@ -1,7 +1,6 @@
 from datetime import datetime
 from sqlalchemy import Engine
-from services import commands
-from services import views
+from services import reminder_service
 from domain_models.reminder import Reminder
 
 def test_reminders(db_engine: Engine):
@@ -11,8 +10,8 @@ def test_reminders(db_engine: Engine):
     reminder = Reminder(title=title, due_date=due_date)
 
     # Act
-    commands.add_reminder(title=title, due_date=due_date)
-    reminders = views.list_reminders()
+    reminder_service.add_reminder(title=title, due_date=due_date)
+    reminders = reminder_service.list_reminders()
 
     # Assert
     assert len(reminders) == 1

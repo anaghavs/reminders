@@ -3,8 +3,7 @@ from flask import request
 from flask_restful import reqparse, Resource
 from pydantic import BaseModel
 
-from services.views import list_reminders
-from services.commands import add_reminder
+from services.reminder_service import add_reminder, list_reminders
 
 class ReminderViewModel(BaseModel):
     title: str
