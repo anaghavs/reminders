@@ -26,15 +26,17 @@ class ReminderRepo:
         )
    
 
-    def list_reminders(self) -> List[Reminder]:
+    def list_reminders(self, email: str) -> List[Reminder]:
         db_results = self._session.execute(
             text(
                 """
                 SELECT reminders.title as title, reminders.due_date as due_date, users.name as name, users.email as email, users.password_hash as password_hash
                 FROM reminders INNER JOIN users
-                where reminders.user_id = users.id
+                where reminders.user_id = users.id AND
+                users.email =:email 
                 """
-            )
+            ),
+            [{"email": email}]
         )
 
         results = []

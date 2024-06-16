@@ -32,7 +32,7 @@ def test_reminder_repo(db_engine: Engine) -> None:
     
     with Session(db_engine) as session:
         reminder_repo = ReminderRepo(session=session)
-        reminders = reminder_repo.list_reminders()
+        reminders = reminder_repo.list_reminders(email=user.email)
 
         assert reminder1 in reminders
         assert reminder2 in reminders

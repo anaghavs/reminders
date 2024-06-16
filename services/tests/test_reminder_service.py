@@ -21,7 +21,7 @@ def test_reminders(db_engine: Engine):
 
     # Act
     reminder_service.add_reminder(title=title, due_date=due_date, email="anagha.1512@gmail.com")
-    reminders = reminder_service.list_reminders()
+    reminders = reminder_service.list_reminders_by_user(email=user.email)
 
     # Assert
     assert len(reminders) == 1
