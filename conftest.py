@@ -1,6 +1,6 @@
 import pytest
-from sqlalchemy import create_engine
-from persistence.db_setup import create_tables
+from persistence.unit_of_work import engine
+from persistence.db_setup import create_tables, drop_tables
 
 
 def pytest_configure(config):
@@ -14,6 +14,6 @@ def pytest_unconfigure(config):
 
 @pytest.fixture
 def db_engine():
-    engine = create_engine("sqlite:///:memory:")
+    drop_tables(engine=engine)
     create_tables(engine=engine)
     return engine

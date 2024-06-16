@@ -13,3 +13,7 @@ def test_user(db_engine: Engine):
     user_service.register_user(name=name, email=email, password=password)
     assert user_service.verify_user_password(email=email, password=password) is True
     assert user_service.verify_user_password(email=email, password="S0m30th3rP@$$w0rd") is False
+    actual_user = user_service.get_user_by_email(email=email)
+    assert actual_user.name == name
+    assert actual_user.email == email
+

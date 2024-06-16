@@ -7,6 +7,10 @@ def test_user_model():
     user1 = User(name=name, email=email, password_hash=password_hash)
     user2 = User(name=name, email=email, password_hash=password_hash)
 
+
+#both user1 and user2 will have same values but they are stored at different addresses,
+#  so system treats them as different.
+ 
     assert user1.name == name
     assert user1.email == email
     assert user1.password_hash == password_hash 

@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
+from domain_models.user import User
 
 
 # creating model
@@ -7,4 +8,4 @@ from datetime import datetime
 class Reminder:
     title: str
     due_date: datetime
-
+    user: User

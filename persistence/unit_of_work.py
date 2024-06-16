@@ -2,10 +2,11 @@ import sys
 from contextlib import contextmanager
 import sqlalchemy
 from sqlalchemy.orm import sessionmaker
-from persistence.db_setup import create_tables
+from persistence.db_setup import create_tables, drop_tables
 
 if hasattr(sys, '_called_from_test'):
     engine = sqlalchemy.create_engine("sqlite:///:memory:")
+    drop_tables(engine=engine)
     create_tables(engine=engine)
 else:
     engine = sqlalchemy.create_engine("sqlite:///reminders.db")

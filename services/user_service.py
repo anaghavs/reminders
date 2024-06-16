@@ -33,3 +33,11 @@ def verify_user_password(email: str, password: str) -> bool:
             user = user_repo.get_user_by_email(email)
             return verify_password_hash(password_to_verify=password, hashed_password=user.password_hash)
 
+
+def get_user_by_email(email: str) -> User:
+    with UnitOfWork() as uow:
+        with uow.get_session() as session:
+            user_repo = UserRepo(session=session)
+            user = user_repo.get_user_by_email(email)
+
+            return user
