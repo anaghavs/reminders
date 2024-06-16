@@ -24,10 +24,18 @@ CREATE_REMINDER_TABLE = """
     );
 """
 
+CREATE_IMAGE_TABLE ="""
+    CREATE TABLE images (
+        id integer NOT NULL PRIMARY KEY,
+        image_url varchar(255)
+    );
+"""
+
 def drop_tables(engine):
     with engine.connect() as connection:
         connection.execute(text("DROP TABLE IF EXISTS reminders;"))
         connection.execute(text("DROP TABLE IF EXISTS users;"))
+        connection.execute(text("DROP TABLE IF EXISTS images;"))
 
 
 def create_tables(engine):
@@ -35,5 +43,6 @@ def create_tables(engine):
         connection.execute(text(CREATE_USER_TABLE))
         connection.execute(text(CREATE_UNIQUE_INDEX_ON_USER_EMAIL))
         connection.execute(text(CREATE_REMINDER_TABLE))
+        connection.execute(text(CREATE_IMAGE_TABLE))
         connection.commit()
 
