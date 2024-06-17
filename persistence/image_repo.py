@@ -37,5 +37,7 @@ class ImageRepo:
             image = Image(image_url=row.image_url)
             results.append(image)
 
+#results will store all the image objects
+
         return results
 

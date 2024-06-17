@@ -12,6 +12,7 @@ def add_reminder(title: str, due_date: datetime, email: str):
             user_repo = UserRepo(session=session)
             user = user_repo.get_user_by_email(email=email)
             reminder = Reminder(title=title, due_date=due_date, user=user)
+            
             reminder_repo = ReminderRepo(session=session)
             reminder_repo.add_reminder(reminder)
             session.commit()

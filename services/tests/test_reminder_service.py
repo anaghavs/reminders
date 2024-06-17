@@ -11,7 +11,7 @@ from services import reminder_service, user_service
 
 def test_reminders(db_engine: Engine):
 
-
+    #Arrange
     user_service.register_user(name="Anagha Shenoy", email="anagha.1512@gmail.com", password="N0t@R3@lP@$$w0rd")
     user = user_service.get_user_by_email(email="anagha.1512@gmail.com")
 

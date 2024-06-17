@@ -45,9 +45,3 @@ class UserRepo:
            user = User(name=row.name, email=row.email, password_hash=row.password_hash)
 
         return user
-
-
-
-
-
-
